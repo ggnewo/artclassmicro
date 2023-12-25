@@ -4,6 +4,8 @@ import random
 
 screenWidth, screenHeight = pyautogui.size()
 startingvar = 5
+smyorn = False
+nowyoucan = False
 #Gets a random number
 def getrandomnumber():
     global number
@@ -31,14 +33,18 @@ print(finnumber)
 #The micro :0, start from google/opera gx/tor/whatever
 def micro():
     print("Micro Starting!")
+    #Generates a new name for the website
+    getname()
+    #Resets the countdown value
+    startingvar = 5
     #Makes a new window that goes to vercel
     pyautogui.hotkey('ctrl', 'n')
-    pyautogui.write('vercel.com', interval=0.1)
+    pyautogui.write('vercel.com', interval=0.02)
     pyautogui.press('enter')
     time.sleep(0.5)
     #Copies the repo so we can paste it later
     pyautogui.hotkey('ctrl', 'n')    
-    pyautogui.write('https://github.com/art-class/v4', interval=0.1)
+    pyautogui.write('https://github.com/art-class/v4', interval=0.02)
     pyautogui.hotkey('ctrl', 'a')
     pyautogui.hotkey('ctrl', 'c')
     pyautogui.hotkey('ctrl', 'w')
@@ -58,14 +64,15 @@ def micro():
     #More navigating
     pyautogui.moveTo(1201,742)
     pyautogui.click()
-    pyautogui.sleep(1)
+    pyautogui.sleep(1.5)
     pyautogui.moveTo(809,590)
     pyautogui.click()
     time.sleep(1)
     pyautogui.moveTo(1300,620)
     pyautogui.click()
-    #The random-generated website name, which is just random numbers bc that's easy
-    pyautogui.write(str(finnumber), interval=0.1) 
+    #The random-generated website name, which is just random numbers bc that's easy and my producer tag
+    pyautogui.write(str(finnumber), interval=0.02) 
+    pyautogui.write('.ggnewo', interval= 0.02)
     pyautogui.moveTo(1487,671)
     pyautogui.click()
     print("The link is now made!")
@@ -74,10 +81,13 @@ def micro():
     print("You can also type x to terminate the program :nerd:")
     itdoneyipee = input("")
     if itdoneyipee == "s":
+        pyautogui.hotkey('ctrl','w')
         micro()
     elif itdoneyipee == "h":
+        pyautogui.hotkey('ctrl','w')
         home()
     elif itdoneyipee == "x":
+        pyautogui.hotkey('ctrl','w')
         exit(1)
 def starting_thing():
     global startingvar
