@@ -6,6 +6,9 @@ screenWidth, screenHeight = pyautogui.size()
 startingvar = 5
 smyorn = False
 nowyoucan = False
+numbermade = 0
+loopmode = False
+proxymode = ""
 #Gets a random number
 def getrandomnumber():
     global number
@@ -33,62 +36,46 @@ print(finnumber)
 #The micro :0, start from google/opera gx/tor/whatever
 def micro():
     print("Micro Starting!")
+    print(str(numbermade) + " proxies generated this session")
     #Generates a new name for the website
+    getrandomnumber()
     getname()
     #Resets the countdown value
     startingvar = 5
     #Makes a new window that goes to vercel
     pyautogui.hotkey('ctrl', 'n')
-    pyautogui.write('vercel.com', interval=0.02)
+    pyautogui.write('https://vercel.com/new/clone?repository-url=https://github.com/art-class/v4', interval=0.02)
     pyautogui.press('enter')
-    time.sleep(0.5)
-    #Copies the repo so we can paste it later
-    pyautogui.hotkey('ctrl', 'n')    
-    pyautogui.write('https://github.com/art-class/v4', interval=0.02)
-    pyautogui.hotkey('ctrl', 'a')
-    pyautogui.hotkey('ctrl', 'c')
-    pyautogui.hotkey('ctrl', 'w')
-    #Navigating vercel
-    time.sleep(0.3)
-    pyautogui.moveTo(1531, 260)
-    pyautogui.click()
-    time.sleep(0.1)
-    pyautogui.moveTo(1531,310)
-    pyautogui.click()
-    time.sleep(1)
-    pyautogui.moveTo(484,881)
-    pyautogui.click()
-    time.sleep(1)
-    #Pastes the repo link
-    pyautogui.hotkey('ctrl','v')
-    #More navigating
-    pyautogui.moveTo(1201,742)
-    pyautogui.click()
-    pyautogui.sleep(1.5)
+    time.sleep(3)
     pyautogui.moveTo(809,590)
+    pyautogui.click()
+    time.sleep(1)
     pyautogui.click()
     time.sleep(1)
     pyautogui.moveTo(1300,620)
     pyautogui.click()
     #The random-generated website name, which is just random numbers bc that's easy and my producer tag
-    pyautogui.write(str(finnumber), interval=0.02) 
-    pyautogui.write('.ggnewo', interval= 0.02)
+    pyautogui.write(str(finnumber), interval=0.1) 
+    pyautogui.write('.ggnewo', interval= 0.1)
     pyautogui.moveTo(1487,671)
     pyautogui.click()
-    print("The link is now made!")
-    print("Deployment can take anywhere from 30 seconds to a couple minutes, so be patient!")
-    print("Type s to run it back, or h to go back home.")
-    print("You can also type x to terminate the program :nerd:")
-    itdoneyipee = input("")
-    if itdoneyipee == "s":
-        pyautogui.hotkey('ctrl','w')
-        micro()
-    elif itdoneyipee == "h":
-        pyautogui.hotkey('ctrl','w')
-        home()
-    elif itdoneyipee == "x":
-        pyautogui.hotkey('ctrl','w')
-        exit(1)
+    if loopmode == True:
+        print("Link made!")
+    if loopmode == False:
+        print("The link is now made!")
+        print("Deployment can take anywhere from 30 seconds to a couple minutes, so be patient!")
+        print("Type s to run it back, or h to go back home.")
+        print("You can also type x to terminate the program :nerd:")
+        itdoneyipee = input("")
+        if itdoneyipee == "s":
+            pyautogui.hotkey('ctrl','w')
+            micro()
+        elif itdoneyipee == "h":
+            pyautogui.hotkey('ctrl','w')
+            home()
+        elif itdoneyipee == "x":
+            pyautogui.hotkey('ctrl','w')
+            exit(1)
 def starting_thing():
     global startingvar
     for i in range(5):
@@ -97,11 +84,12 @@ def starting_thing():
         time.sleep(1)
 def home():
     print("Welcome to the Art Class Micro!")
-    print("If you need help using the program, enter h")
+    print("If you need help using the program, enter h\nYou can also enable experemental features, but they might not work as I haven't heavily tested them")
     print("Press s to get started!")
     print(" ")
     start = input("")
     if start == "s":
+        proxymode = "github.com/art-class/v4"
         starting_thing()
         micro()
     elif start == "h":
@@ -113,6 +101,32 @@ def home():
         print("Made with ♡ by ggnewo")
         backtohome = input("Type h to go back to the home: ")
         if backtohome == "h" or "H":
+            home()
+    elif start == "e":
+        print("Now in experimental mode!")
+        print("Keep in mind these features might not work.")
+        print("Again, if there's any issues, dm me on discord my username is ggnewo :)")
+        print("Current experemental features:\n1:Infinite Loop mode\n2:Controlled loop mode")
+        ec = input("Chose the mode you want: ")
+        if ec == "1":
+            loopmode = True
+            while True:
+                starting_thing()
+                micro()
+                numbermade = numbermade + 1
+        elif ec == "2":
+            loopmode = True
+            print("How many proxies do you want to make?")
+            proxienum = input()
+            print("Ok, making " + proxienum + " proxies")
+            numba = int(proxienum)
+            starting_thing()
+            for i in range(numba):
+                micro()
+                numbermade = numbermade + 1
+        else:
+            print("Buddy")
+            time.sleep(1)
             home()
     else:
         print("You messed up lmao")
