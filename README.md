@@ -11,3 +11,9 @@ If there's a problem, this is probably why:
 If this doesn't help, dm me on discord: ggnewo
 
 Vercel please don't kill me :)
+
+Update log!
+v1.3:
+Added a way quicker and more effecient way of making proxies (new url drop)
+Times banned from vercel:
+2
